@@ -1,5 +1,5 @@
 export default function(sequelize, DataTypes) {
-    return sequelize.define('todos', {
+    return sequelize.define('Todo', {
         body: DataTypes.STRING
     });
 };

@@ -14,12 +14,12 @@ var sequelize = new Sequelize(
 
 // list models
 var models = [
-  'todos'
+  'Todo'
 ];
 
 // load models
 models.forEach(function(model) {
-  module.exports[model] = sequelize.import(__dirname + '/' + model);
+  module.exports[model] = sequelize.import(__dirname + '/' + model.toLowerCase());
 });
 
 // describe relationships

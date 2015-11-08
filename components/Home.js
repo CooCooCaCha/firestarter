@@ -32,18 +32,17 @@ class Home extends React.Component {
 
     render() {
         var todos = this.props.todos.map((todo) =>
-            <div key={todo.id}>{todo.body}</div>
+            <div key={todo.id} onClick={this.handleDeleteTodo(todo.id)}>{todo.body}</div>
         );
 
         return (
             <div>
-                <input placeholder="New Todo2" 
+                <input placeholder="New Todo" 
                           value={this.state.newTodo} 
                        onChange={this.handleInputChange}
                       onKeyDown={this.handleInputEnter}
                 />
                 <div>
-                    Test
                     {todos}
                 </div>
             </div>
