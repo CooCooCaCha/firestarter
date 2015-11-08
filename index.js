@@ -1,6 +1,6 @@
 import React        from 'react';
 import ReactDOM     from 'react-dom';
-import routes       from './routes.js';
+import Routes       from './components/Routes.js';
 import thunk        from 'redux-thunk';
 import reduxPromise from 'redux-promise';
 
@@ -49,7 +49,7 @@ ReactDOM.render(
     <div>
     <Provider store={store}>
         <div>
-            <Router history={history} children={routes} />
+            <Router history={history} children={Routes} />
         </div>
     </Provider>
     </div>,

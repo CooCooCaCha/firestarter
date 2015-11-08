@@ -1,27 +1,18 @@
-import express          from 'express';
-import path             from 'path';
-import bodyParser       from 'body-parser';
-import proxy            from 'proxy-middleware';
-import url              from 'url';
-import api              from './api';
-import webpack          from 'webpack';
-import WebpackDevServer from 'webpack-dev-server';
-import webpackConfig    from './webpack.config.js';
+import path                 from 'path';
+import bodyParser           from 'body-parser';
+import api                  from './api';
+import webpack              from 'webpack';
+import webpackConfig        from './webpack.config.js';
+import webpackDevMiddleware from 'webpack-dev-middleware';
+import webpackHotMiddleware from 'webpack-hot-middleware';
 
-const app        = express();
-const NODE_ENV   = app.get('env');
-const PRODUCTION = NODE_ENV === 'production';
+var app  = new (require('express'))();
+var port = 8080;
 
 // Setup webpack server
-var webpackServer = new WebpackDevServer(webpack(webpackConfig), {
-    hot: true,
-    historyApiFallback: true,
-    publicPath: '/assets/',
-
-    stats: { colors: true }
-})
-
-webpackServer.listen(3000, 'localhost', () => {});
+var compiler = webpack(webpackConfig);
+app.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: webpackConfig.output.publicPath }));
+app.use(webpackHotMiddleware(compiler));
 
 // Express plugins
 app.use(bodyParser.json());
@@ -29,12 +20,15 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // Setup routes
 api(app);
-app.use('/assets', proxy(url.parse('http://localhost:3000/assets')));
 app.get('/*', (req, res) => {
     res.sendFile(__dirname + '/index.html');
 });
 
 // Start server
-app.listen(8080, () => {
-    console.log("Listening on port 8080");
+app.listen(port, (error) => {
+  if (error) {
+    console.error(error)
+  } else {
+    console.info("==> 🌎  Listening on port %s. Open up http://<docker-machine ip>:%s/ in your browser.", port, port)
+  }
 });
