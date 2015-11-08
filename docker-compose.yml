@@ -1,0 +1,16 @@
+web:
+    build: .
+    ports:
+        - "8080:8080"
+        - "3000:3000"
+    volumes:
+        - .:/usr/src/app
+    links:
+        - postgres
+postgres:
+    image: postgres:9.4.5
+    environment:
+        POSTGRES_USER: admin
+        POSTGRES_PASSWORD: admin
+    ports:
+        - "5432:5432"
