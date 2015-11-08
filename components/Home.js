@@ -1,6 +1,8 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import {load, add, del} from '../actions/TodoActions';
 
+@connect(state => ({todos: state.todos}))
 class Home extends React.Component {
     constructor(props, contexts) {
         super(props);
@@ -34,8 +36,8 @@ class Home extends React.Component {
         );
 
         return (
-            <div style={styles.paper}>
-                <input hintText="New Todo" 
+            <div>
+                <input placeholder="New Todo" 
                           value={this.state.newTodo} 
                        onChange={this.handleInputChange}
                       onKeyDown={this.handleInputEnter}

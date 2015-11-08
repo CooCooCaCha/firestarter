@@ -8,7 +8,7 @@ function todos(state = [], action) {
             return [...state, action.todo];
         case TODO_DELETE:
             return [...state].filter((todo) => {
-                return todo._id !== action.id;
+                return todo.id !== action.id;
             });
         default:
             return state;

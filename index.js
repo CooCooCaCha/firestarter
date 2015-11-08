@@ -13,12 +13,6 @@ let history = createHistory();
 import './styles/core.css';
 
 import {
-    DevTools, 
-    DebugPanel, 
-    LogMonitor 
-} from 'redux-devtools/lib/react';
-
-import {
     createStore,
     combineReducers,
     applyMiddleware,
@@ -27,32 +21,37 @@ import {
 } from 'redux';
 
 import {
-    devTools,
+    createDevTools,
     persistState
 } from 'redux-devtools';
+
+import LogMonitor from 'redux-devtools-log-monitor';
+import DockMonitor from 'redux-devtools-dock-monitor';
 
 import * as reducers from './reducers';
 
 const finalCreateStore = compose(
     applyMiddleware(reduxPromise, thunk),
-    devTools(),
     persistState(window.location.href.match(/[?&]debug_session=([^&]+)\b/)),
-    createStore
-);
+)(createStore);
 
 const reducer = combineReducers(reducers);
 const store   = finalCreateStore(reducer);
 
+let DevTools = createDevTools(
+  <DockMonitor toggleVisibilityKey='H'
+               changePositionKey='Q'>
+    <LogMonitor />
+  </DockMonitor>
+);
+
 ReactDOM.render(
     <div>
     <Provider store={store}>
-        {() => <Router history={history} children={routes} />}
+        <div>
+            <Router history={history} children={routes} />
+        </div>
     </Provider>
-
-    <DebugPanel top bottom right>
-        <DevTools store={store}
-                monitor={LogMonitor} />
-    </DebugPanel>
     </div>,
     document.getElementById('react')
 );
