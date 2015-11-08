@@ -1,20 +1,18 @@
-import express    from 'express';
-import path       from 'path';
-import bodyParser from 'body-parser';
-import proxy      from 'proxy-middleware';
-import url        from 'url';
-import Sequelize  from 'sequelize';
-import api        from './api';
+import express          from 'express';
+import path             from 'path';
+import bodyParser       from 'body-parser';
+import proxy            from 'proxy-middleware';
+import url              from 'url';
+import api              from './api';
+import webpack          from 'webpack';
+import WebpackDevServer from 'webpack-dev-server';
+import webpackConfig    from './webpack.config.js';
 
 const app        = express();
 const NODE_ENV   = app.get('env');
 const PRODUCTION = NODE_ENV === 'production';
 
 // Setup webpack server
-import webpack from 'webpack';
-import WebpackDevServer from 'webpack-dev-server';
-import webpackConfig from './webpack.config.js';
-
 var webpackServer = new WebpackDevServer(webpack(webpackConfig), {
     hot: true,
     historyApiFallback: true,

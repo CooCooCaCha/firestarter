@@ -3,11 +3,11 @@
 An app for ordering logs.
 
 ## Installation
-1. Git clone this repository and CD into it.
-2. Install [NodeJS v5.0.0+](https://nodejs.org)
-3. Download and install [Docker Toolbox](https://www.docker.com/docker-toolbox)
-4. Open Kitematic to make sure the VM is running.
-5. Open the Docker Quickstart Terminal that was installed by Toolbox.
+1. Install [NodeJS v5.0.0+](https://nodejs.org)
+2. Download and install [Docker Toolbox](https://www.docker.com/docker-toolbox)
+3. Open Kitematic to make sure the VM is running.
+4. Open the Docker Quickstart Terminal that was installed by Toolbox.
+5. Git clone this repository and CD into it.
 6. Run `docker-compose up`
 
 ## References
