@@ -10,7 +10,7 @@ import {Provider}      from 'react-redux';
 
 let history = createHistory();
 
-import './styles/core.css';
+import './styles/core.scss';
 
 import {
     createStore,
