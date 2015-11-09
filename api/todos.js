@@ -24,7 +24,7 @@ router.delete('/:id', (req, res) => {
       }
     })
     .then(() => {
-      res.redirect('/');
+      res.json({id: req.params.id});
     });
 });
 
