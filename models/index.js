@@ -1,5 +1,8 @@
 var Sequelize = require('sequelize');
-var config    = require('config').get('development');  // we use node-config to handle environments
+var glob      = require('glob');
+var path      = require('path');
+var config    = require('config').get('development');
+var db        = {};
 
 // initialize database connection
 var sequelize = new Sequelize(
@@ -12,21 +15,22 @@ var sequelize = new Sequelize(
   }
 );
 
-// list models
-var models = [
-  'Todo'
-];
+glob.sync('models/**.js')
+  .filter(file => file !== 'models/index.js')
+  .map(file => {
+    var model = sequelize.import(file.slice(7));
+    db[model.name] = model; 
+  });
 
-// load models
-models.forEach(function(model) {
-  module.exports[model] = sequelize.import(__dirname + '/' + model.toLowerCase());
+Object.keys(db).forEach(modelName => {
+  if("associate" in db[modelName]) {
+    db[modelName].associate(db);
+  }
 });
-
-// describe relationships
-(function(m) {
-})(module.exports);
 
 sequelize.sync();
 
-// export connection
-module.exports.sequelize = sequelize;
+db.sequelize = sequelize;
+db.Sequelize = Sequelize;
+
+module.exports = db;

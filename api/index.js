@@ -1,11 +1,11 @@
 import glob from 'glob';
 
 export default (app) => {
-  let files = glob.sync( "api/**")
-    .filter(file => file !== 'api' && file !== 'api/index.js') // Ignore base dir and index.js
-    .filter(file => file.slice(-2) === 'js')                   // Filter out folders.
-    .map(file => file.slice(3, -3));                           // Remove 'api' from the front and '.js' from the back.
+  let routes = glob.sync( "api/**")
+    .filter(route => route !== 'api' && route !== 'api/index.js') // Ignore base dir and index.js
+    .filter(route => route.slice(-2) === 'js')                    // Filter out folders.
+    .map(route => route.slice(3, -3));                            // Remove 'api' from the front and '.js' from the back.
 
   // Api now matches folder structure!
-  files.map(file => app.use('/api' + file, require('.' + file))); 
+  routes.map(route => app.use('/api' + route, require('.' + route))); 
 };
