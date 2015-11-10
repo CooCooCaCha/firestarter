@@ -12,5 +12,22 @@ An app for ordering logs.
 
 NOTE: On OSX you have to use the docker machine IP to access the app locally. You can see this by running `docker-machine ip default`
 
+## Hot Reloading - OSX
+Due to issues with virtualbox file syncing doesn't work properly by default. 
+
+To remedy this install docker-rsync using homebrew:
+```
+brew tap synack/docker
+brew install docker-rsync
+```
+
+Then, remove the shared folder from the virtualbox UI. Virtualbox's default file-sharing system will only slow us down.
+
+Finally, inside the project folder, run the following command:
+```
+docker-rsync -dst <path-to-project> default
+```
+This will run continuously in your terminal window syncing the latest files from your hard drive!
+
 ## References
 http://www.redotheweb.com/2013/02/20/sequelize-the-javascript-orm-in-practice.html

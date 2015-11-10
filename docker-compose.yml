@@ -1,13 +1,12 @@
-web:
-    build: .
-    ports:
-        - "8080:8080"
-        - "3000:3000"
+web2:
+    extends:
+        file: docker-compose.common.yml
+        service: web2
     volumes:
         - .:/usr/src/app
     links:
-        - postgres
-postgres:
+        - postgres2
+postgres2:
     image: postgres:9.4.5
     environment:
         POSTGRES_USER: admin
