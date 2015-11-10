@@ -42,7 +42,7 @@ class Home extends React.Component {
                        onChange={this.handleInputChange}
                       onKeyDown={this.handleInputEnter}
                 />
-                <div>Test16
+                <div>
                     {todos}
                 </div>
             </div>
