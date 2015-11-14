@@ -1,15 +1,16 @@
-web2:
-    extends:
-        file: docker-compose.common.yml
-        service: web2
-    volumes:
-        - .:/usr/src/app
-    links:
-        - postgres2
-postgres2:
-    image: postgres:9.4.5
-    environment:
-        POSTGRES_USER: admin
-        POSTGRES_PASSWORD: admin
-    ports:
-        - "5432:5432"
+web:
+  extends:
+    file: docker-compose.common.yml
+    service: web
+  build: .
+  volumes:
+    - .:/usr/src/app
+  links:
+    - postgres
+postgres:
+  image: postgres:9.4.5
+  environment:
+    POSTGRES_USER: admin
+    POSTGRES_PASSWORD: admin
+  ports:
+    - "5432:5432"

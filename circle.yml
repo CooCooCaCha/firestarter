@@ -1,0 +1,21 @@
+machine:
+  services:
+    - docker
+
+dependencies:
+  override:
+    - sudo pip install --upgrade docker-compose=1.5.1
+
+test:
+  pre:
+    - docker-compose pull
+    - docker-compose up -d
+  override:
+    - docker-compose run web npm test
+
+deployment:
+  hub:
+    branch: master
+    commands:
+      - docker login -u $DOCKER_USER -p $DOCKER_PASS
+      - docker push ccccoocoocacha/firestarter

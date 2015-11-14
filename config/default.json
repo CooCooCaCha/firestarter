@@ -1,23 +1,7 @@
 {
-  "development": {
+  "database": {
     "username": "admin",
     "password": "admin",
-    "database": "postgres",
-    "host": "192.168.99.100",
-    "dialect": "postgres"
-  },
-  "test": {
-    "username": "admin",
-    "password": "admin",
-    "database": "database_test",
-    "host": "127.0.0.1",
-    "dialect": "postgres"
-  },
-  "production": {
-    "username": "root",
-    "password": null,
-    "database": "database_production",
-    "host": "127.0.0.1",
-    "dialect": "postgres"
+    "database": "postgres"
   }
 }

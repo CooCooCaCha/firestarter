@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node ./node_modules/node-sass/scripts/install.js && sequelize db:migrate --config config/default.json && npm run dev && webpack-dev-server --hot --progress --colors --devtool source-map",
+    "start": "node ./node_modules/node-sass/scripts/install.js && npm run dev && webpack-dev-server --hot --progress --colors --devtool source-map",
     "dev": "node babel.server.js",
     "build": "webpack --progress --colors --devtool source-map --display-error-details",
     "test": "mocha --compilers js:babel/register --recursive"
@@ -55,6 +55,7 @@
     "sequelize-cli": "^2.1.0",
     "style-loader": "^0.13.0",
     "superagent": "^1.2.0",
+    "umzug": "^1.6.0",
     "url": "^0.11.0",
     "url-loader": "^0.5.6",
     "webpack": "1.12.2",
