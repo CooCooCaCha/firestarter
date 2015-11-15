@@ -3,6 +3,8 @@ machine:
     version: 5.0.0
   services:
     - docker
+  pre:
+    - sudo curl -sSL https://get.docker.com/ | sh
 
 dependencies:
   cache_directories:
