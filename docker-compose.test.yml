@@ -1,0 +1,11 @@
+web:
+  extends:
+    file: docker-compose.yml
+    service: web
+  image: coocoocacha/firestarter
+  links:
+    - postgres
+postgres:
+  extends:
+    file: docker-compose.yml
+    service: postgres

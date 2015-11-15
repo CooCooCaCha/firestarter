@@ -20,7 +20,7 @@ test:
   pre:
     - docker build -t coocoocacha/firestarter .
     - docker-compose pull
-    - docker-compose up -d
+    - docker-compose -f docker-compose.test.yml up -d
   override:
     - docker-compose run web npm test
 
@@ -28,7 +28,7 @@ deployment:
   hub:
     branch: master
     commands:
-      - ecs-cli configure --region us-east-1 --cluster Firestarter
-      - ecs-cli compose up
-      #- docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
-      #- docker push coocoocacha/firestarter:CIRCLE_SHA1
+      #- ecs-cli configure --region us-east-1 --cluster Firestarter
+      #- ecs-cli compose up
+      - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
+      - docker push coocoocacha/firestarter
