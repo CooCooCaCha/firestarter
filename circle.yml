@@ -7,15 +7,11 @@ dependencies:
     - "~/docker"
   override:
     - sudo pip install --upgrade docker-compose==1.5.1
-    - docker info
-    - if [[ -e ~/docker/image.tar ]]; then docker load --input ~/docker/image.tar; fi
-    - docker build -t coocoocacha/firestarter .
-    - mkdir -p ~/docker; docker save coocoocacha/firestarter > ~/docker/image.tar
 
 test:
   pre:
     - docker-compose pull
-    - docker-compose -f docker-compose.test.yml up -d
+    - docker-compose up -d
   override:
     - docker-compose run web npm test
 
