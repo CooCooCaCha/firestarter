@@ -4,7 +4,7 @@ COPY . /usr/src/app
 
 WORKDIR /usr/src/app
 RUN npm install && \
-    npm install -g webpack sequelize-cli && \
+    npm install -g webpack eslint && \
     npm run build
 
 EXPOSE 8080

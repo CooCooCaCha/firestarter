@@ -4,9 +4,14 @@ machine:
 
 dependencies:
   cache_directories:
-    - "~/docker"
+    - "~/node_modules"
   override:
+    - curl -o https://github.com/docker/compose/releases/download/1.5.1/docker-compose-Linux-x86_64 > /home/ubuntu/bin/docker-compose
     - sudo pip install --upgrade docker-compose==1.5.1
+    - if [[ -e ~/node_modules ]]; then \
+        cp -r ~/node_modules node_modules; fi
+    - docker build -t coocoocacha/firestarter .
+    - cp -r node_modules ~/node_modules
 
 test:
   pre:
