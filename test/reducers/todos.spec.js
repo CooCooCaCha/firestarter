@@ -1,5 +1,5 @@
-import todos from '../../reducers/todos';
+import todos from "../../reducers/todos";
 
-describe('todos', () => {
+describe("todos", () => {
 
 });

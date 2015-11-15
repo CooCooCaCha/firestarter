@@ -1,8 +1,8 @@
-import React from 'react';
+import React from "react";
 
 class NoMatch extends React.Component {
     render() {
-        return <div>404 - Not Found</div>;
+      return <div>404 - Not Found</div>;
     }
 }
 

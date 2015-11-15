@@ -1,8 +1,8 @@
-var Sequelize = require('sequelize');
-var Umzug     = require('umzug');
-var glob      = require('glob');
-var path      = require('path');
-var config    = require('config').get('database');
+var Sequelize = require("sequelize");
+var Umzug     = require("umzug");
+var glob      = require("glob");
+var path      = require("path");
+var config    = require("config").get("database");
 var db        = {};
 
 var sequelize = new Sequelize(
@@ -30,15 +30,15 @@ var umzug = new Umzug({
   sequelize: sequelize,
   migrations: {
     params: [sequelize.getQueryInterface(), sequelize.constructor, () => {
-      throw new Error('Migration tried to use old style "done" callback. Please upgrade to "umzug" and return a promise instead.');
+      throw new Error("Migration tried to use old style \"done\" callback. Please upgrade to \"umzug\" and return a promise instead.");
     }],
-    path: './migrations',
+    path: "./migrations",
     pattern: /\.js$/
   }
 });
 
-glob.sync('models/**.js')
-  .filter(file => file !== 'models/index.js')
+glob.sync("models/**.js")
+  .filter(file => file !== "models/index.js")
   .map(file => {
     var model = sequelize.import(file.slice(7));
     db[model.name] = model; 

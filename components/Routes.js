@@ -1,9 +1,9 @@
-import React   from 'react';
-import {Route} from 'react-router';
+import React   from "react";
+import {Route} from "react-router";
 
-import App     from './App';
-import Home    from './Home';
-import NoMatch from './NoMatch';
+import App     from "./App";
+import Home    from "./Home";
+import NoMatch from "./NoMatch";
 
 export default (
     <Route component={App}>

@@ -1,0 +1,15 @@
+{
+  "parser": "babel-eslint",
+
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true
+  },
+
+  "rules": {
+    "semi": [2, "always"],
+    "quotes": [2, "double"],
+    "indent": [2, 2]
+  }
+}

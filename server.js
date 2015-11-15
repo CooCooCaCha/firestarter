@@ -1,13 +1,13 @@
-import path                 from 'path';
-import ip                   from 'ip';
-import bodyParser           from 'body-parser';
-import api                  from './api';
-import webpack              from 'webpack';
-import webpackConfig        from './webpack.config.js';
-import webpackDevMiddleware from 'webpack-dev-middleware';
-import webpackHotMiddleware from 'webpack-hot-middleware';
+import path                 from "path";
+import ip                   from "ip";
+import bodyParser           from "body-parser";
+import api                  from "./api";
+import webpack              from "webpack";
+import webpackConfig        from "./webpack.config.js";
+import webpackDevMiddleware from "webpack-dev-middleware";
+import webpackHotMiddleware from "webpack-hot-middleware";
 
-var app  = new (require('express'))();
+var app  = new (require("express"))();
 var port = 8080;
 
 // Setup webpack server
@@ -21,15 +21,15 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // Setup routes
 api(app);
-app.get('/*', (req, res) => {
-    res.sendFile(__dirname + '/index.html');
+app.get("/*", (req, res) => {
+  res.sendFile(__dirname + "/index.html");
 });
 
 // Start server
 app.listen(port, (error) => {
   if (error) {
-    console.error(error)
+    console.error(error);
   } else {
-    console.info("==> 🌎  Listening on port %s. Open up http://<docker-machine ip>:%s/ in your browser.", port, port)
+    console.info("==> 🌎  Listening on port %s. Open up http://<docker-machine ip>:%s/ in your browser.", port, port);
   }
 });
