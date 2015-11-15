@@ -7,11 +7,10 @@ dependencies:
     - "~/docker"
   override:
     - sudo pip install --upgrade docker-compose==1.5.1
-    - if [[ -e ~/docker/image.tar ]]; then \
-        docker load -i ~/docker/image.tar; fi
+    - docker info
+    - if [[ -e ~/docker/image.tar ]]; then docker load --input ~/docker/image.tar; fi
     - docker build -t coocoocacha/firestarter .
-    - mkdir -p ~/docker; docker save coocoocacha/firestarter \
-        > ~/docker/image.tar
+    - mkdir -p ~/docker; docker save coocoocacha/firestarter > ~/docker/image.tar
 
 test:
   pre:
@@ -25,5 +24,4 @@ deployment:
     branch: master
     commands:
       - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
-      - docker tag firestarter_web coocoocacha/firestarter
       - docker push coocoocacha/firestarter
