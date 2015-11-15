@@ -10,6 +10,8 @@ dependencies:
   override:
     - curl -L https://github.com/docker/compose/releases/download/1.5.1/docker-compose-Linux-x86_64 > /home/ubuntu/bin/docker-compose
     - chmod +x /home/ubuntu/bin/docker-compose
+    - curl -L https://s3.amazonaws.com/amazon-ecs-cli/ecs-cli-linux-amd64-latest > /home/ubuntu/bin/ecs-cli
+    - chmod +x /home/ubuntu/bin/ecs-cli
     - if [[ -d "~/node_modules" ]]; then cp -r ~/node_modules node_modules; fi
     - npm install
     - cp -r node_modules ~/node_modules
@@ -26,5 +28,7 @@ deployment:
   hub:
     branch: master
     commands:
-      - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
-      - docker push coocoocacha/firestarter:CIRCLE_SHA1
+      - ecs-cli configure --region us-east-1 --cluster Firestarter
+      - ecs-cli compose up
+      #- docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
+      #- docker push coocoocacha/firestarter:CIRCLE_SHA1
