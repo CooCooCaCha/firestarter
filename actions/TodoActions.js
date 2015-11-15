@@ -3,42 +3,42 @@ import request from "superagent";
 
 function load() {
   return new Promise((resolve, reject) => {
-      request
+    request
             .get("/api/todos")
             .end((err, res) => {
               if(err)
-                  reject(res.body || err);
+                reject(res.body || err);
                 else
                     resolve({type: TODO_LOAD, todos: res.body});
             });
-    });
+  });
 }
 
 function add( body ) {
   return new Promise((resolve, reject) => {
-      request
+    request
             .post("/api/todos")
             .send( {body: body} )
             .end((err, res) => {
               if(err)
-                  reject(res.body || err);
+                reject(res.body || err);
                 else
                     resolve({type: TODO_ADD, todo: res.body});
             });
-    });
+  });
 }
 
 function del( id ) {
   return new Promise((resolve, reject) => {
-      request
+    request
             .del("/api/todos/" + id)
             .end((err, res) => {
               if(err)
-                  reject(res.body || err);
+                reject(res.body || err);
                 else
                     resolve({type: TODO_DELETE, id: id });
             });
-    });
+  });
 }
 
 export default {
