@@ -4,7 +4,10 @@ machine:
   services:
     - docker
   pre:
-    - sudo curl -sSL https://get.docker.com/ | sh
+    - docker --version
+    - sudo curl -L -o /usr/bin/docker 'http://s3-external-1.amazonaws.com/circle-downloads/docker-1.9.0-circleci'
+    - sudo chmod 0755 /usr/bin/docker
+    - docker --version
 
 dependencies:
   cache_directories:
