@@ -3,8 +3,15 @@ machine:
     - docker
 
 dependencies:
+  cache_directories:
+    - "~/docker"
   override:
     - sudo pip install --upgrade docker-compose==1.5.1
+    - if [[ -e ~/docker/image.tar ]]; then \
+        docker load -i ~/docker/image.tar; fi
+    - docker build -t coocoocacha/firestarter .
+    - mkdir -p ~/docker; docker save coocoocacha/firestarter \
+        > ~/docker/image.tar
 
 test:
   pre:
