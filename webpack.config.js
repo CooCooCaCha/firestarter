@@ -11,7 +11,7 @@ module.exports = {
     path: path.join(__dirname, "build"),
     publicPath: "/assets/",
     filename: "bundle.js",
-    sourceMapFilename: "debug/[file].map",
+    sourceMapFilename: "debug/[file].map"
   },
   module: {
     loaders: [

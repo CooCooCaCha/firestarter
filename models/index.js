@@ -1,7 +1,6 @@
 var Sequelize = require("sequelize");
 var Umzug     = require("umzug");
 var glob      = require("glob");
-var path      = require("path");
 var config    = require("config").get("database");
 var db        = {};
 
@@ -20,7 +19,7 @@ var sequelize = new Sequelize(
 );
 
 // initialize database connection
-Sequelize.Promise.onPossiblyUnhandledRejection((error, promise) => {
+Sequelize.Promise.onPossiblyUnhandledRejection(error => {
   if(error.name === "SequelizeConnectionRefusedError") {
     sequelize.authenticate();
   }

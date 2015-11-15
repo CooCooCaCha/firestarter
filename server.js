@@ -1,5 +1,3 @@
-import path                 from "path";
-import ip                   from "ip";
 import bodyParser           from "body-parser";
 import api                  from "./api";
 import webpack              from "webpack";
@@ -19,8 +17,10 @@ app.use(webpackHotMiddleware(compiler));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Setup routes
+// Setup API routes
 api(app);
+
+// Base route
 app.get("/*", (req, res) => {
   res.sendFile(__dirname + "/index.html");
 });

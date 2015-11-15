@@ -3,7 +3,7 @@ module.exports = {
     return queryInterface.createTable("Todos", { id: Sequelize.INTEGER, body: Sequelize.STRING });
   },
 
-  down: function (queryInterface, Sequelize) {
+  down: function (queryInterface) {
     return queryInterface.dropTable("Todos");
   }
 };
