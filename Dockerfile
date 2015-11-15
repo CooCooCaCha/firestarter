@@ -1,6 +1,6 @@
 FROM node:5.0.0-wheezy
 
-COPY . /usr/src/app
+ADD . /usr/src/app
 
 WORKDIR /usr/src/app
 RUN npm install && \

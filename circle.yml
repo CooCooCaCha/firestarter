@@ -10,12 +10,13 @@ dependencies:
   override:
     - curl -L https://github.com/docker/compose/releases/download/1.5.1/docker-compose-Linux-x86_64 > /home/ubuntu/bin/docker-compose
     - chmod +x /home/ubuntu/bin/docker-compose
-    - if [[ -e ~/node_modules ]]; then cp -r ~/node_modules node_modules; fi
+    - if [[ -d "~/node_modules" ]]; then cp -r ~/node_modules node_modules; fi
     - npm install
     - cp -r node_modules ~/node_modules
 
 test:
   pre:
+    - docker build -t coocoocacha/firestarter .
     - docker-compose pull
     - docker-compose up -d
   override:
