@@ -25,6 +25,10 @@ app.get("/*", (req, res) => {
   res.sendFile(__dirname + "/index.html");
 });
 
+process.on('SIGTERM', function () {
+  app.close();
+});
+
 // Start server
 app.listen(port, (error) => {
   if (error) {

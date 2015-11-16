@@ -9,7 +9,7 @@ var sequelize = new Sequelize(
   config.username,
   config.password,
   {
-    host: "firestarter_postgres_1", //process.env.POSTGRES_PORT_5432_TCP_ADDR,
+    host: "postgres",
     dialect: "postgres",
     pool: {
       maxConnections: 100,
