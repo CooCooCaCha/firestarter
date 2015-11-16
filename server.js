@@ -25,7 +25,7 @@ app.get("/*", (req, res) => {
   res.sendFile(__dirname + "/index.html");
 });
 
-process.on('SIGTERM', function () {
+process.on("SIGTERM", () => {
   app.close();
 });
 
