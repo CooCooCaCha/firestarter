@@ -26,7 +26,7 @@ app.get("/*", (req, res) => {
 });
 
 process.on("SIGTERM", () => {
-  app.close();
+  process.exit(0);
 });
 
 // Start server
