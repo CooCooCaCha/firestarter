@@ -24,10 +24,7 @@ dependencies:
 test:
   pre:
     - docker build -t coocoocacha/firestarter .
-    - docker-compose pull
-    - docker-compose --x-networking -f docker-compose.test.yml up -d
-  override:
-    - docker-compose run web npm test
+    - docker-compose --x-networking -f docker-compose.test.yml up --no-recreate
 
 deployment:
   hub:

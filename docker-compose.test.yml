@@ -3,6 +3,7 @@ web:
     file: docker-compose.yml
     service: web
   image: coocoocacha/firestarter
+  command: npm run test
 postgres:
   extends:
     file: docker-compose.yml
