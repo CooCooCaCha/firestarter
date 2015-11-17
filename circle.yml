@@ -4,7 +4,6 @@ machine:
   services:
     - docker
   pre:
-    - sudo apt-get install date
     - sudo curl -L -o /usr/bin/docker 'http://s3-external-1.amazonaws.com/circle-downloads/docker-1.9.0-circleci'
     - sudo chmod 0755 /usr/bin/docker
 
@@ -24,7 +23,6 @@ dependencies:
     - chmod +x /home/ubuntu/bin/docker-compose
     - curl -L https://s3.amazonaws.com/amazon-ecs-cli/ecs-cli-linux-amd64-latest > /home/ubuntu/bin/ecs-cli
     - chmod +x /home/ubuntu/bin/ecs-cli
-    - ./scripts/restore-file-timestamps.sh
     - if [[ -e ~/docker/image.tar ]]; then docker load -i ~/docker/image.tar; fi
     - docker build -t coocoocacha/firestarter .
     - mkdir -p ~/docker; docker save coocoocacha/firestarter > ~/docker/image.tar
