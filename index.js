@@ -30,14 +30,6 @@ import DockMonitor from "redux-devtools-dock-monitor";
 
 import * as reducers from "./reducers";
 
-const finalCreateStore = compose(
-    applyMiddleware(reduxPromise, thunk),
-    persistState(window.location.href.match(/[?&]debug_session=([^&]+)\b/)),
-)(createStore);
-
-const reducer = combineReducers(reducers);
-const store   = finalCreateStore(reducer);
-
 let DevTools = createDevTools(
   <DockMonitor toggleVisibilityKey='H'
                changePositionKey='Q'>
@@ -45,10 +37,20 @@ let DevTools = createDevTools(
   </DockMonitor>
 );
 
+const finalCreateStore = compose(
+    applyMiddleware(reduxPromise, thunk),
+    DevTools.instrument(),
+    persistState(window.location.href.match(/[?&]debug_session=([^&]+)\b/)),
+)(createStore);
+
+const reducer = combineReducers(reducers);
+const store   = finalCreateStore(reducer);
+
 ReactDOM.render(
     <div>
     <Provider store={store}>
         <div>
+            <DevTools />
             <Router history={history} children={Routes} />
         </div>
     </Provider>
