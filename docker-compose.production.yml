@@ -4,4 +4,4 @@ web:
     service: web
   image: coocoocacha/firestarter
   extra_hosts:
-    - "postgres:<DBIP>"
+    - "postgres:firestarter.cbterblekl0v.us-east-1.rds.amazonaws.com"

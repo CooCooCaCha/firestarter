@@ -34,4 +34,4 @@ deployment:
       - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
       - docker push coocoocacha/firestarter
       - ecs-cli configure --region us-east-1 --cluster Firestarter
-      - ecs-cli compose up
+      - ecs-cli compose --file docker-compose.production.yml up
