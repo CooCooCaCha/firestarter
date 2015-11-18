@@ -8,7 +8,7 @@ An app for ordering logs.
 3. Open Kitematic to make sure the VM is running.
 4. Open the Docker Quickstart Terminal that was installed by Toolbox.
 5. Git clone this repository and CD into it.
-6. Run `docker-compose up`
+6. Run `docker-compose --x-networking up`
 
 NOTE: On OSX you have to use the docker machine IP to access the app locally. You can see this by running `docker-machine ip default`
 
