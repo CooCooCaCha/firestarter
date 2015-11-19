@@ -1,4 +1,4 @@
-box: docker:1.9-dind
+box: docker:latest
 build:
   steps:
     - script:
