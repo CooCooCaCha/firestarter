@@ -1,4 +1,4 @@
-# Firestarter [![Circle CI](https://circleci.com/gh/CooCooCaCha/firestarter.svg?style=svg)](https://circleci.com/gh/CooCooCaCha/firestarer) [ ![Codeship Status for CooCooCaCha/firestarter](https://codeship.com/projects/2b233dd0-7101-0133-9ea4-2226d3632c6f/status?branch=master)](https://codeship.com/projects/116726) [![wercker status](https://app.wercker.com/status/5b26226b3fba501e885d8b26102d68b0/m "wercker status")](https://app.wercker.com/project/bykey/5b26226b3fba501e885d8b26102d68b0)
+# Firestarter [![Circle CI](https://circleci.com/gh/CooCooCaCha/firestarter.svg?style=svg)](https://circleci.com/gh/CooCooCaCha/firestarer) [ ![Codeship Status for CooCooCaCha/firestarter](https://codeship.com/projects/2b233dd0-7101-0133-9ea4-2226d3632c6f/status?branch=master)](https://codeship.com/projects/116726)
 
 An app for ordering logs.
 
