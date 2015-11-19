@@ -1,4 +1,5 @@
 # Firestarter
+[ ![Codeship Status for CooCooCaCha/firestarter](https://codeship.com/projects/2b233dd0-7101-0133-9ea4-2226d3632c6f/status?branch=master)](https://codeship.com/projects/116726)
 
 An app for ordering logs.
 
