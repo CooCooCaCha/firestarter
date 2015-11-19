@@ -14,6 +14,9 @@ var sequelize = new Sequelize(
     pool: {
       maxConnections: 100,
       maxIdleTime: 1000
+    },
+    define: {
+      timestamps: false
     }
   }
 );

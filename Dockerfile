@@ -1,14 +1,14 @@
-FROM node:5.0.0-slim
+FROM mhart/alpine-node:5.1
 
-RUN curl -L https://npmjs.org/install.sh | sh
-
-WORKDIR /usr/src/app
-COPY package.json /usr/src/app/package.json
-RUN ls
-RUN npm install -g webpack eslint babel-eslint --loglevel warn && \
-    npm install --loglevel warn
+RUN apk --update add git gcc g++ make python
 
 COPY . /usr/src/app
+WORKDIR /usr/src/app
+
+RUN npm install -g webpack eslint babel-eslint --loglevel warn
+RUN npm install --loglevel warn
+RUN rm -rf /var/cache/apk/*
+
 RUN npm run build
 
 EXPOSE 8080
