@@ -1,6 +1,4 @@
 machine:
-  node:
-    version: 5.0.0
   services:
     - docker
   pre:
@@ -8,7 +6,6 @@ machine:
     - sudo chmod 0755 /usr/bin/docker
 
 dependencies:
-  parallel: false
   cache_directories:
     - "~/docker_images"
   override:
@@ -30,7 +27,6 @@ test:
     - docker-compose --x-networking -f docker-compose.test.yml run web npm test --no-recreate
 
 deployment:
-  parallel: false
   hub:
     branch: master
     commands:
