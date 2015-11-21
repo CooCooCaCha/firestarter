@@ -1,4 +1,0 @@
-- type: parallel
-  steps:
-    - service: web
-      command: npm run test
