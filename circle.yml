@@ -18,7 +18,7 @@ dependencies:
     - cp scripts/docker-dump.sh /home/ubuntu/bin/docker-dump.sh
     - git ls-files | xargs touch -t 201401010000
     - if [[ -e ~/docker_images ]]; then cd ~/docker_images; docker-dump.sh load; cd -; fi
-    - docker images
+    - docker-compose pull
     - docker build -t coocoocacha/firestarter .
     - mkdir -p ~/docker_images; cd ~/docker_images; docker-dump.sh save; cd -;
 
