@@ -37,6 +37,7 @@ class Home extends React.Component {
 
       return (
             <div>
+                <div>Welcome to Firestarter!</div>
                 <input placeholder="New Todo" 
                           value={this.state.newTodo} 
                        onChange={this.handleInputChange}
