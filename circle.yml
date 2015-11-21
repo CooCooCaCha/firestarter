@@ -18,7 +18,7 @@ dependencies:
     - if [[ -e ~/docker_images ]]; then cd ~/docker_images; docker-dump.sh load; cd -; fi
     - docker-compose pull
     - docker build -t coocoocacha/firestarter .
-    - mkdir -p ~/docker_images; cd ~/docker_images; docker-dump.sh save; cd -;
+    - mkdir -p ~/docker_images; rm -rf ~/docker_images/*; cd ~/docker_images; docker-dump.sh save; cd -;
 
 test:
   pre:
